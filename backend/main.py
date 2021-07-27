@@ -1,5 +1,5 @@
-from fast_api import FastAPI
-from fast_api.middleware.cors import CORSMiddleware
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 # app object
 app = FastAPI()
@@ -13,3 +13,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+@app.get("/")
+def read_root():
+  return {"Ping": "Pong"}
