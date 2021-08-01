@@ -38,7 +38,7 @@ async def get_todo():
   return response
 
 
-@app.get("/api/todo/{title}}", response_model=Todo)
+@app.get("/api/todo/{title}", response_model=Todo)
 async def get_todo_by_id(title):
   response = await fetch_one_todo(title)
   if response:
@@ -48,7 +48,7 @@ async def get_todo_by_id(title):
 
 @app.post("/api/todo", response_model=Todo)
 async def post_todo(todo: Todo):
-  response = await create_todo(todo.dict())
+  response = await create_todo(todo)
   if response:
     return response
   raise HTTPException(400, "Something went wrong")

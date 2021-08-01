@@ -22,7 +22,7 @@ collection = database.todo
 
 
 async def fetch_one_todo(title):
-  document = collection.find_one({"title": title})
+  document = await collection.find_one({"title": title})
   return document
 
 
@@ -36,9 +36,12 @@ async def fetch_all_todos():
 
 
 async def create_todo(todo):
-  document = todo
+  document = todo.dict()
   result = await collection.insert_one(document)
-  return result
+  if result.acknowledged:
+    return True
+  else:
+    return False
 
 
 async def update_todo(title, desc):
