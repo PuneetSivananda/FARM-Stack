@@ -33,8 +33,27 @@ function App() {
               className='mb-2 form-control titleIn'
               placeholder='Title'
             />
+            <input
+              type='text'
+              className='mb-2 form-control descIn'
+              placeholder='Description'
+            />
+            <button
+              className='btn btn-outline-primary mx-2 mb-2'
+              style={{
+                borderRadius: "50px",
+                fontWeight: "bold",
+              }}
+            >
+              Add Task
+            </button>
           </span>
+          <h5 className='card text-white bg-dark mb-3'>Your Tasks</h5>
+          <div className=''>{/* Todo Items - External Component */}</div>
         </div>
+        <h6 className='card text-dark bg-warning py-1 mb-0'>
+          Copywright 2021, All Rights Reserved &copy;
+        </h6>
       </div>
     </div>
   );
