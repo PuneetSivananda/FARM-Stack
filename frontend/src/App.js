@@ -2,7 +2,9 @@ import './App.css';
 import React,{ useState,useEffect } from 'react'
 import axios from 'axios'
 
-import 'bootstrap/dist/css/bootstrap.min.css'
+import "bootstrap/dist/css/bootstrap.min.css";
+
+import TodoView from "./components/TodoListView";
 
 function App() {
   const [todoList, setTodoList] = useState([{}]);
@@ -18,6 +20,7 @@ function App() {
 
   //Post a Todo
   const addTodoHandler = () => {
+    console.log(title);
     axios
       .post("http://localhost:8000/api/todo/", {
         title: title,
@@ -60,18 +63,21 @@ function App() {
             onChange={(event) => setDesc(event.target.value)}
           />
           <button
-            className='btn btn-outline-primary mx-2 mb-2'
+            className='btn btn-outline-primary mx-2 mb-3'
             style={{
               borderRadius: "50px",
               fontWeight: "bold",
             }}
-            onClick={addTodoHandler}
+            onClick={() => addTodoHandler}
           >
             Add Task
           </button>
         </span>
         <h5 className='card text-white bg-dark mb-3'>Your Tasks</h5>
-        <div className=''>{/* Todo Items - External Component */}</div>
+        <div className=''>
+          {/* Todo Items - External Component */}
+          <TodoView todoList={todoList} />
+        </div>
       </div>
       <h6 className='card text-dark bg-warning py-1 mb-0'>
         Copywright 2021, All Rights Reserved &copy;
